@@ -186,32 +186,56 @@
   }
   .service-desc { font-size: 15px; color: var(--muted); line-height: 1.75; }
 
-  /* PROJECTS */
-  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  /* PROJECTS — single column, horizontal card layout */
+  .projects-grid { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--border); }
 
   .project-card {
-    border: 1px solid var(--border);
+    border: none;
+    border-bottom: 1px solid var(--border);
     overflow: hidden;
     text-decoration: none;
     color: inherit;
-    display: flex;
-    flex-direction: column;
-    transition: border-color 0.25s, transform 0.25s;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    transition: background 0.2s;
+    background: transparent;
   }
-  .project-card:hover { border-color: var(--copper); transform: translateY(-2px); }
+  .project-card:last-child { border-bottom: none; }
+  .project-card:hover { background: var(--border); }
 
+  .project-thumb-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    background: var(--border);
+  }
   .project-thumb {
     width: 100%;
-    aspect-ratio: 16/9;
+    height: 100%;
     object-fit: cover;
     object-position: top;
     display: block;
+    transition: transform 0.35s ease;
+  }
+  .project-card:hover .project-thumb { transform: scale(1.03); }
+
+  .project-thumb-placeholder {
+    display: none;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: "EB Garamond", serif;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
   }
 
-  .project-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+  .project-body { padding: 28px 32px; display: flex; flex-direction: column; justify-content: center; }
   .project-tag { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--copper); margin-bottom: 8px; }
-  .project-title { font-family: "EB Garamond", serif; font-size: 21px; font-weight: 400; margin-bottom: 10px; line-height: 1.2; }
-  .project-desc { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 18px; flex: 1; }
+  .project-title { font-family: "EB Garamond", serif; font-size: 24px; font-weight: 400; margin-bottom: 10px; line-height: 1.2; }
+  .project-desc { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
   .project-cta { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--charcoal); border-bottom: 1px solid var(--border); padding-bottom: 1px; display: inline-block; transition: border-color 0.2s, color 0.2s; }
   .project-card:hover .project-cta { border-color: var(--copper); color: var(--copper); }
 
@@ -261,7 +285,8 @@
     .wrap { padding: 72px 24px; }
     #top { padding-top: 120px; }
     .service-row { grid-template-columns: 1fr; gap: 10px; }
-    .projects-grid { grid-template-columns: 1fr; }
+    .project-card { grid-template-columns: 1fr; }
+    .project-thumb-wrap { aspect-ratio: 16/9; }
     .skills-wrap { grid-template-columns: 1fr; gap: 40px; }
     .contact-row { grid-template-columns: 1fr; gap: 32px; }
     footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px; }
@@ -334,9 +359,20 @@
 <section class="wrap" id="projects">
   <div class="rule fade"><div class="rule-line"></div><span class="rule-label">Projects</span></div>
   <h2 class="fade">Selected work.</h2>
-  <div class="projects-grid">
-    <a href="https://www.quirkycreations.co.nz" target="_blank" class="project-card fade">
-      <img src="https://www.quirkycreations.co.nz/og-image.png" alt="Quirky Creations by Herbi website" class="project-thumb" width="1200" height="630" loading="lazy">
+  <div class="projects-grid fade">
+
+    <a href="https://www.quirkycreations.co.nz" target="_blank" class="project-card">
+      <div class="project-thumb-wrap">
+        <img
+          src="https://api.microlink.io/?url=https%3A%2F%2Fwww.quirkycreations.co.nz&screenshot=true&meta=false&embed=screenshot.url"
+          alt="Quirky Creations by Herbi website"
+          class="project-thumb"
+          width="560" height="315"
+          loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+        >
+        <div class="project-thumb-placeholder">Quirky Creations</div>
+      </div>
       <div class="project-body">
         <div class="project-tag">Client work &middot; 2025</div>
         <div class="project-title">Quirky Creations by Herbi</div>
@@ -344,8 +380,19 @@
         <span class="project-cta">View site →</span>
       </div>
     </a>
-    <a href="https://parallaxlabs.co.nz" target="_blank" class="project-card fade">
-      <img src="https://parallaxlabs.co.nz/og-image.png" alt="Parallax Labs website" class="project-thumb" width="1200" height="630" loading="lazy">
+
+    <a href="https://parallaxlabs.co.nz" target="_blank" class="project-card">
+      <div class="project-thumb-wrap">
+        <img
+          src="https://api.microlink.io/?url=https%3A%2F%2Fparallaxlabs.co.nz&screenshot=true&meta=false&embed=screenshot.url"
+          alt="Parallax Labs website"
+          class="project-thumb"
+          width="560" height="315"
+          loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+        >
+        <div class="project-thumb-placeholder">Parallax Labs</div>
+      </div>
       <div class="project-body">
         <div class="project-tag">Own studio &middot; 2026</div>
         <div class="project-title">Parallax Labs</div>
@@ -353,8 +400,19 @@
         <span class="project-cta">View site →</span>
       </div>
     </a>
-    <a href="https://flashaudit.io" target="_blank" class="project-card fade">
-      <img src="https://flashaudit.io/og-image.png" alt="FlashAudit — AI Website Audit Tool" class="project-thumb" width="1200" height="630" loading="lazy">
+
+    <a href="https://flashaudit.io" target="_blank" class="project-card">
+      <div class="project-thumb-wrap">
+        <img
+          src="https://api.microlink.io/?url=https%3A%2F%2Fflashaudit.io&screenshot=true&meta=false&embed=screenshot.url"
+          alt="FlashAudit — AI Website Audit Tool"
+          class="project-thumb"
+          width="560" height="315"
+          loading="lazy"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+        >
+        <div class="project-thumb-placeholder">FlashAudit</div>
+      </div>
       <div class="project-body">
         <div class="project-tag">Own product &middot; 2026</div>
         <div class="project-title">FlashAudit</div>
@@ -362,6 +420,7 @@
         <span class="project-cta">View product →</span>
       </div>
     </a>
+
   </div>
 </section>
 
