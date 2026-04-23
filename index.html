@@ -217,14 +217,16 @@
     object-position: top center;
     display: block;
     transition: transform 0.35s ease;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.35s ease;
   }
+  .project-thumb.loaded { opacity: 1; }
   .project-card:hover .project-thumb { transform: scale(1.04); }
 
   .project-thumb-placeholder {
-    display: none;
-    width: 100%;
-    height: 100%;
-    min-height: 180px;
+    position: absolute;
+    inset: 0;
+    display: flex;
     align-items: center;
     justify-content: center;
     font-family: "EB Garamond", serif;
@@ -233,6 +235,7 @@
     text-transform: uppercase;
     color: var(--muted);
   }
+  .project-thumb-placeholder.hidden { display: none; }
 
   .project-body { padding: 28px 32px; display: flex; flex-direction: column; justify-content: center; }
   .project-tag { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--copper); margin-bottom: 8px; }
@@ -366,12 +369,10 @@
     <a href="https://www.quirkycreations.co.nz" target="_blank" class="project-card">
       <div class="project-thumb-wrap">
         <img
-          src="https://i.microlink.io/https%3A//api.microlink.io/%3Furl%3Dhttps%253A//www.quirkycreations.co.nz%26viewport.width%3D1280%26viewport.height%3D800%26screenshot%3Dtrue%26meta%3Dfalse%26type%3Djpeg"
+          data-screenshot-url="https://www.quirkycreations.co.nz"
           alt="Quirky Creations by Herbi website"
           class="project-thumb"
           width="1280" height="800"
-          loading="lazy"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
         >
         <div class="project-thumb-placeholder">Quirky Creations</div>
       </div>
@@ -386,12 +387,10 @@
     <a href="https://parallaxlabs.co.nz" target="_blank" class="project-card">
       <div class="project-thumb-wrap">
         <img
-          src="https://i.microlink.io/https%3A//api.microlink.io/%3Furl%3Dhttps%253A//parallaxlabs.co.nz%26viewport.width%3D1280%26viewport.height%3D800%26screenshot%3Dtrue%26meta%3Dfalse%26type%3Djpeg"
+          data-screenshot-url="https://parallaxlabs.co.nz"
           alt="Parallax Labs website"
           class="project-thumb"
           width="1280" height="800"
-          loading="lazy"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
         >
         <div class="project-thumb-placeholder">Parallax Labs</div>
       </div>
@@ -406,12 +405,10 @@
     <a href="https://flashaudit.io" target="_blank" class="project-card">
       <div class="project-thumb-wrap">
         <img
-          src="https://i.microlink.io/https%3A//api.microlink.io/%3Furl%3Dhttps%253A//flashaudit.io%26viewport.width%3D1280%26viewport.height%3D800%26screenshot%3Dtrue%26meta%3Dfalse%26type%3Djpeg"
+          data-screenshot-url="https://flashaudit.io"
           alt="FlashAudit — AI Website Audit Tool"
           class="project-thumb"
           width="1280" height="800"
-          loading="lazy"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
         >
         <div class="project-thumb-placeholder">FlashAudit</div>
       </div>
@@ -522,6 +519,32 @@
   }, { threshold: 0.08 });
 
   document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+
+  // Load project screenshots via Microlink JSON API
+  document.querySelectorAll("img[data-screenshot-url]").forEach(img => {
+    const url = img.getAttribute("data-screenshot-url");
+    const placeholder = img.nextElementSibling;
+    const apiUrl = "https://api.microlink.io/?url=" + encodeURIComponent(url) +
+      "&viewport.width=1280&viewport.height=900&screenshot=true&fullPage=true&meta=false&type=jpeg";
+
+    fetch(apiUrl)
+      .then(r => r.json())
+      .then(data => {
+        if (data.status === "success" && data.data.screenshot && data.data.screenshot.url) {
+          img.src = data.data.screenshot.url;
+          img.onload = () => {
+            img.classList.add("loaded");
+            if (placeholder) placeholder.classList.add("hidden");
+          };
+          img.onerror = () => {
+            img.style.display = "none";
+          };
+        }
+      })
+      .catch(() => {
+        // placeholder stays visible on error
+      });
+  });
 </script>
 
 </body>
