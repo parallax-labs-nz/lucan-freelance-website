@@ -216,7 +216,6 @@
     object-fit: cover;
     object-position: top center;
     display: block;
-    transition: transform 0.35s ease;
     opacity: 0;
     transition: opacity 0.4s ease, transform 0.35s ease;
   }
@@ -372,7 +371,7 @@
           data-screenshot-url="https://www.quirkycreations.co.nz"
           alt="Quirky Creations by Herbi website"
           class="project-thumb"
-          width="1280" height="800"
+          width="1280" height="900"
         >
         <div class="project-thumb-placeholder">Quirky Creations</div>
       </div>
@@ -390,7 +389,7 @@
           data-screenshot-url="https://parallaxlabs.co.nz"
           alt="Parallax Labs website"
           class="project-thumb"
-          width="1280" height="800"
+          width="1280" height="900"
         >
         <div class="project-thumb-placeholder">Parallax Labs</div>
       </div>
@@ -408,7 +407,7 @@
           data-screenshot-url="https://flashaudit.io"
           alt="FlashAudit — AI Website Audit Tool"
           class="project-thumb"
-          width="1280" height="800"
+          width="1280" height="900"
         >
         <div class="project-thumb-placeholder">FlashAudit</div>
       </div>
@@ -520,12 +519,12 @@
 
   document.querySelectorAll(".fade").forEach(el => observer.observe(el));
 
-  // Load project screenshots via Microlink JSON API
+  // Load project screenshots via Microlink JSON API (viewport-only, no fullPage)
   document.querySelectorAll("img[data-screenshot-url]").forEach(img => {
     const url = img.getAttribute("data-screenshot-url");
     const placeholder = img.nextElementSibling;
     const apiUrl = "https://api.microlink.io/?url=" + encodeURIComponent(url) +
-      "&viewport.width=1280&viewport.height=900&screenshot=true&fullPage=true&meta=false&type=jpeg";
+      "&viewport.width=1280&viewport.height=900&screenshot=true&meta=false&type=jpeg";
 
     fetch(apiUrl)
       .then(r => r.json())
@@ -541,9 +540,7 @@
           };
         }
       })
-      .catch(() => {
-        // placeholder stays visible on error
-      });
+      .catch(() => {});
   });
 </script>
 
