@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lucan Fulcher - Consultant, Auckland</title>
 <meta name="description" content="Auckland-based consultant specialising in business process optimisation, customer experience, and web development. Available for clients across New Zealand and Australia.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232A2A24'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Georgia,serif' font-size='16' font-weight='700' fill='%23F2EDE3'%3ELF%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Lucan Fulcher — CX & Operations Consultant, Auckland">
+<meta property="og:description" content="I help businesses work better. Streamlining operations, improving customer experience, and building digital tools that support it all.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lucanfulcher.com">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400&display=swap" rel="stylesheet">
@@ -219,6 +225,43 @@
     line-height: 1.7;
   }
 
+  /* CX — When to bring me in */
+  .cx-signs-wrap {
+    margin-top: 44px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+  }
+  .cx-signs-intro {
+    font-family: "EB Garamond", serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 22px;
+    color: var(--charcoal);
+  }
+  .cx-signs-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .cx-signs-list li {
+    font-size: 15px;
+    color: var(--muted);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.6;
+  }
+  .cx-signs-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 10px;
+    height: 1px;
+    background: var(--copper);
+  }
+
   /* PROJECTS */
   .projects-grid { display: flex; flex-direction: column; border: 1px solid var(--border); }
 
@@ -314,6 +357,30 @@
   .fade { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
   .fade.in { opacity: 1; transform: none; }
 
+  /* SCROLL TO TOP */
+  .scroll-top {
+    position: fixed;
+    bottom: 32px; right: 32px;
+    z-index: 90;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--cream);
+    color: var(--muted);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s, color 0.2s, border-color 0.2s;
+    line-height: 1;
+  }
+  .scroll-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+  .scroll-top:hover { color: var(--charcoal); border-color: var(--charcoal); }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 18px 24px; }
@@ -326,6 +393,7 @@
     .project-thumb-wrap { height: 200px; }
     .skills-wrap { grid-template-columns: 1fr; gap: 40px; }
     .cx-grid { grid-template-columns: 1fr; gap: 32px; }
+    .scroll-top { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 16px; }
     .contact-row { grid-template-columns: 1fr; gap: 32px; }
     footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px; }
     .hero-meta { gap: 28px; }
@@ -430,6 +498,18 @@
   </div>
 
   <p class="cx-closing fade">Whether it&rsquo;s a full CX strategy or a focused improvement in one area, I work directly with your team to make it happen &mdash; no lengthy change programmes, no unnecessary complexity.</p>
+
+  <div class="cx-signs-wrap fade">
+    <p class="cx-signs-intro">If any of this sounds familiar, I can probably help.</p>
+    <ul class="cx-signs-list">
+      <li>Your NPS, CSAT, or customer satisfaction metrics have been flat for months and nobody can explain why</li>
+      <li>Your contact centre has inconsistent quality, high turnover, or no clear framework for how work should be done</li>
+      <li>You&rsquo;re getting the same complaints over and over, and they never seem to get properly fixed</li>
+      <li>You&rsquo;re launching a new service or product and need the customer experience right from day one</li>
+      <li>You have customer feedback coming in but no structured way to act on it or track whether things improve</li>
+      <li>Compliance requirements are creating friction for customers, and you want to find a smarter way to meet them</li>
+    </ul>
+  </div>
 </section>
 
 <!-- PROJECTS -->
@@ -553,7 +633,7 @@
   <div class="contact-row fade">
     <div>
       <div class="contact-label">Email</div>
-      <a href="mailto:hello@parallaxlabs.co.nz" class="contact-val">hello@parallaxlabs.co.nz</a>
+      <a href="mailto:lucanfulcher@outlook.com" class="contact-val">lucanfulcher@outlook.com</a>
     </div>
     <div>
       <div class="contact-label">LinkedIn</div>
@@ -562,6 +642,8 @@
   </div>
   <p class="contact-note fade">Based in Auckland and working remotely. Taking on clients across New Zealand and Australia. Happy to have a conversation before anything formal.</p>
 </section>
+
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&uarr;</button>
 
 <footer>
   <span>&copy; 2026 Lucan Fulcher</span>
@@ -575,6 +657,7 @@
 
   window.addEventListener("scroll", () => {
     nav.classList.toggle("scrolled", window.scrollY > 40);
+    document.getElementById("scrollTop").classList.toggle("visible", window.scrollY > 400);
   });
 
   hamburger.addEventListener("click", () => {
@@ -587,6 +670,10 @@
       hamburger.classList.remove("open");
       mobileMenu.classList.remove("open");
     });
+  });
+
+  document.getElementById("scrollTop").addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
   const observer = new IntersectionObserver((entries) => {
