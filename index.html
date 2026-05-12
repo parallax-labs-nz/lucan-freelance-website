@@ -186,6 +186,39 @@
   }
   .service-desc { font-size: 15px; color: var(--muted); line-height: 1.75; }
 
+  /* CUSTOMER EXPERIENCE SECTION */
+  .cx-intro { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 40px; max-width: 640px; }
+  .cx-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 36px; }
+  .cx-col-title {
+    font-family: "EB Garamond", serif;
+    font-size: 19px;
+    font-weight: 400;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.2;
+    color: var(--charcoal);
+  }
+  .cx-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .cx-list li { font-size: 15px; color: var(--muted); padding-left: 16px; position: relative; line-height: 1.55; }
+  .cx-list li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 1px; background: var(--copper); }
+  .cx-narrative {
+    font-size: 16px;
+    color: var(--charcoal);
+    line-height: 1.75;
+    padding: 32px 0 0;
+    border-top: 1px solid var(--border);
+    margin-bottom: 0;
+  }
+  .cx-narrative p + p { margin-top: 20px; }
+  .cx-closing {
+    margin-top: 28px;
+    font-size: 15px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.7;
+  }
+
   /* PROJECTS */
   .projects-grid { display: flex; flex-direction: column; border: 1px solid var(--border); }
 
@@ -292,6 +325,7 @@
     .project-card { grid-template-columns: 1fr; }
     .project-thumb-wrap { height: 200px; }
     .skills-wrap { grid-template-columns: 1fr; gap: 40px; }
+    .cx-grid { grid-template-columns: 1fr; gap: 32px; }
     .contact-row { grid-template-columns: 1fr; gap: 32px; }
     footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px; }
     .hero-meta { gap: 28px; }
@@ -304,6 +338,7 @@
   <a href="#top" class="nav-name">Lucan Fulcher</a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
+    <li><a href="#cx">Customer Experience</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#about">About</a></li>
@@ -316,6 +351,7 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="#services" class="mob-link">Services</a>
+  <a href="#cx" class="mob-link">Customer Experience</a>
   <a href="#projects" class="mob-link">Projects</a>
   <a href="#skills" class="mob-link">Skills</a>
   <a href="#about" class="mob-link">About</a>
@@ -351,12 +387,49 @@
   </div>
   <div class="service-row fade">
     <div class="service-name">Customer Experience Consulting</div>
-    <div class="service-desc">Most CX problems aren&rsquo;t really about the people. They&rsquo;re about how the work is set up. I&rsquo;ve spent years inside contact centres and customer operations, including programmes delivered on behalf of the Australian Commonwealth Department of Health and Aged Care and New South Wales State Government electoral services. I know where things tend to go wrong and how to fix them in a way that actually sticks.</div>
+    <div class="service-desc">Most CX problems aren&rsquo;t about the people &mdash; they&rsquo;re about how the work is set up. I help businesses map their customer journeys, improve contact centre operations, design quality assurance frameworks, and build CX strategies that actually work. <a href="#cx" style="color:var(--charcoal);text-decoration:underline;text-underline-offset:3px;white-space:nowrap;">Learn more below &darr;</a></div>
   </div>
   <div class="service-row fade">
     <div class="service-name">Web &amp; App Development</div>
     <div class="service-desc">I build digital products shaped by years inside the operations that need them. Whether it&rsquo;s a website, a web application, or a mobile app, the goal is the same: straightforward, functional, built to solve real problems. No bloat, no unnecessary complexity.</div>
   </div>
+</section>
+
+<!-- CUSTOMER EXPERIENCE -->
+<section class="wrap" id="cx">
+  <div class="rule fade"><div class="rule-line"></div><span class="rule-label">Customer Experience</span></div>
+  <h2 class="fade">How I approach CX.</h2>
+
+  <p class="cx-intro fade">Most CX problems aren&rsquo;t really about the people on the front line. They&rsquo;re about how the work is set up &mdash; the systems, the processes, the handoffs, the tools, the way information flows (or doesn&rsquo;t). Fix those and the customer experience follows.</p>
+
+  <div class="cx-grid fade">
+    <div>
+      <div class="cx-col-title">Diagnosis & design</div>
+      <ul class="cx-list">
+        <li>Customer journey mapping and service blueprinting</li>
+        <li>Root-cause analysis of recurring CX failures</li>
+        <li>Quality assurance framework design</li>
+        <li>Complaint analysis and systemic improvement</li>
+        <li>Customer feedback loop design and closed-loop resolution</li>
+      </ul>
+    </div>
+    <div>
+      <div class="cx-col-title">Operations & strategy</div>
+      <ul class="cx-list">
+        <li>Contact centre operations and process redesign</li>
+        <li>Voice of Customer (VoC) program design</li>
+        <li>CX metrics strategy &mdash; NPS, CSAT, CES, and what actually matters</li>
+        <li>Training, coaching, and knowledge management alignment</li>
+        <li>Compliance integration without compromising experience</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cx-narrative fade">
+    <p>I&rsquo;ve developed and refined this approach across contact centres, government-contracted programmes, and compliance-heavy environments in New Zealand and Australia. That includes work delivered on behalf of the Australian Commonwealth Department of Health and Aged Care and New South Wales State Government electoral services. I know what works when compliance isn&rsquo;t optional, and I know how to balance operational efficiency with customer experience &mdash; because I&rsquo;ve had to do both.</p>
+  </div>
+
+  <p class="cx-closing fade">Whether it&rsquo;s a full CX strategy or a focused improvement in one area, I work directly with your team to make it happen &mdash; no lengthy change programmes, no unnecessary complexity.</p>
 </section>
 
 <!-- PROJECTS -->
@@ -406,7 +479,7 @@
       <div class="project-thumb-wrap">
         <img
           data-screenshot-url="https://flashaudit.io"
-          alt="FlashAudit — AI Website Audit Tool"
+          alt="FlashAudit ï¿½ AI Website Audit Tool"
           class="project-thumb"
           width="1280" height="900"
         >
@@ -434,9 +507,13 @@
         <li>Business process mapping and optimisation</li>
         <li>Contact centre operations and improvement</li>
         <li>Customer experience design and consulting</li>
-        <li>Compliance, quality assurance and documentation</li>
+        <li>Customer journey mapping and service blueprinting</li>
+        <li>CX metrics strategy and VoC programs</li>
+        <li>Root-cause analysis and complaint handling</li>
+        <li>Quality assurance framework design</li>
         <li>Knowledge management and team capability</li>
         <li>Stakeholder communication and reporting</li>
+        <li>Compliance and documentation</li>
       </ul>
     </div>
     <div>
